@@ -1,0 +1,9 @@
+
+Nsquid:S3985\"1Remove this unused private "RecipeAdapter" class.(³öòb8À¤°Œ÷-
+…squid:S3252,"gUse static access with "com.google.android.material.snackbar.BaseTransientBottomBar" for "LENGTH_LONG".(“ì”œ8¶¤°Œ÷-
+_squid:S1854†"@Remove this useless assignment to local variable "recyclerView".(ÄÓ²¡8Í±é‹÷-
+lsquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(²Ú±Ž8ÒÀÀ‰÷-
+†squid:S3252Ž"gUse static access with "com.google.android.material.snackbar.BaseTransientBottomBar" for "LENGTH_LONG".(õ‰¯à8ÓÀÀ‰÷-
+nsquid:CommentedOutCodeLine0"<This block of commented-out lines of code should be removed.(ÏÛÅ®úÿÿÿÿ8À¤°Œ÷-
+…squid:S32523"gUse static access with "com.google.android.material.snackbar.BaseTransientBottomBar" for "LENGTH_LONG".(Û¬š8À¤°Œ÷-
+isquid:CommentedOutCodeLineU"<This block of commented-out lines of code should be removed.(úï†š8øì‹÷-

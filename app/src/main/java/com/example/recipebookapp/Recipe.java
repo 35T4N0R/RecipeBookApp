@@ -12,7 +12,7 @@ import java.util.List;
 public class Recipe {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int recipeId;
 
     @SerializedName("label")
     private String title;
@@ -25,6 +25,13 @@ public class Recipe {
 
     @SerializedName("ingredientLines")
     private List<String> ingredients;
+
+    public Recipe(String title, String imageUrl, String sourceUrl, List<String> ingredients){
+        this.title = title;
+        this.imageUrl = imageUrl;
+        this.sourceUrl = sourceUrl;
+        this.ingredients = ingredients;
+    }
 
     public String getTitle(){
         return this.title;
@@ -40,5 +47,21 @@ public class Recipe {
 
     public List<String> getIngredients(){
         return this.ingredients;
+    }
+
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    public void setImageUrl(String imageUrl){
+        this.imageUrl = imageUrl;
+    }
+
+    public void setSourceUrl(String sourceUrl){
+        this.sourceUrl = sourceUrl;
+    }
+
+    public void setIngredients(List<String> ingredients){
+        this.ingredients = ingredients;
     }
 }
