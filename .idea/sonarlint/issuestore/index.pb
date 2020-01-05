@@ -5,3 +5,25 @@ m
 =app/src/main/java/com/example/recipebookapp/MainActivity.java,6\2\62e1fde430908b70288e8ae9100b751f86d9d502
 g
 7app/src/main/java/com/example/recipebookapp/Recipe.java,3\2\3248b23808012133ea4191e08823539965512e82
+q
+Aapp/src/main/java/com/example/recipebookapp/RetrofitInstance.java,4\1\412852d0babd65b8bafcd012b796ae2df285d4b6
+n
+>app/src/main/java/com/example/recipebookapp/RecipeService.java,8\7\8703824c5eeb12491062fcffc89155aa24ad661f
+p
+@app/src/main/java/com/example/recipebookapp/RecipeViewModel.java,7\9\79193b7c93561eb76fc5fc180f58f0b6f01c3396
+q
+Aapp/src/main/java/com/example/recipebookapp/RecipeRepository.java,6\e\6ea6a47ba8adedf2f9aaa896159b7dda35ad88a6
+j
+:app/src/main/java/com/example/recipebookapp/RecipeDao.java,f\d\fde256e5993e22a192b5974a7dbbceb5bdf28799
+l
+<app/src/main/java/com/example/recipebookapp/Ingredients.java,4\f\4f220cffad25bf128bb6ef0a2b08266f292e2988
+u
+Eapp/src/main/java/com/example/recipebookapp/IngredientsConverter.java,6\f\6f029cd8abb37e6f7a18215d8df361f6d2ed0375
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+s
+Capp/src/main/java/com/example/recipebookapp/OneRecipeContainer.java,5\2\52876b87d5a5fa20736569012fd3f8a3f53edb34
+p
+@app/src/main/java/com/example/recipebookapp/RecipeContainer.java,9\0\90ba01e50e31dde8be29bd13414a8fd0e51a23f6
+o
+?app/src/main/java/com/example/recipebookapp/RecipeDatabase.java,2\6\2658cd325c70bf66176cd3fe1df282c6647b9c18

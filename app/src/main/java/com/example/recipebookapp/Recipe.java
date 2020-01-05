@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(tableName="recipe")
@@ -23,14 +24,18 @@ public class Recipe {
     @SerializedName("url")
     private String sourceUrl;
 
-    @SerializedName("ingredientLines")
-    private List<String> ingredients;
+    //@SerializedName("ingredientLines")
+    //private ArrayList<String> ingredients;
 
-    public Recipe(String title, String imageUrl, String sourceUrl, List<String> ingredients){
+    public Recipe(String title, String imageUrl, String sourceUrl/*,ArrayList<String> ingredients*/){
         this.title = title;
         this.imageUrl = imageUrl;
         this.sourceUrl = sourceUrl;
-        this.ingredients = ingredients;
+        //this.ingredients = ingredients;
+    }
+
+    public int getRecipeId(){
+        return this.recipeId;
     }
 
     public String getTitle(){
@@ -45,8 +50,12 @@ public class Recipe {
         return this.sourceUrl;
     }
 
-    public List<String> getIngredients(){
+    /*public ArrayList<String> getIngredients(){
         return this.ingredients;
+    }*/
+
+    public void setRecipeId(int recipeId){
+        this.recipeId = recipeId;
     }
 
     public void setTitle(String title){
@@ -61,7 +70,7 @@ public class Recipe {
         this.sourceUrl = sourceUrl;
     }
 
-    public void setIngredients(List<String> ingredients){
+    /*public void setIngredients(ArrayList<String> ingredients){
         this.ingredients = ingredients;
-    }
+    }*/
 }

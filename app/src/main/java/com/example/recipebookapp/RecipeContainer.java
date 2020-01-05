@@ -7,13 +7,13 @@ import java.util.List;
 public class RecipeContainer {
 
     @SerializedName("hits")
-    private List<Recipe> recipeList;
+    private List<OneRecipeContainer> recipeList;
 
-    public List<Recipe> getRecipeList(){
+    public List<OneRecipeContainer> getRecipeList(){
         return this.recipeList;
     }
 
-    public void setRecipeList(List<Recipe> recipeList){
+    public void setRecipeList(List<OneRecipeContainer> recipeList){
         this.recipeList = recipeList;
     }
 }

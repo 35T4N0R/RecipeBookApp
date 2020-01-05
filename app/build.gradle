@@ -50,4 +50,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:2.1.0"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation "com.google.android.material:material:1.0.0"
+
+    implementation "android.arch.persistence.room:runtime:1.0.0-alpha3"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha3"
+    implementation 'com.google.code.gson:gson:2.6.2'
+
 }

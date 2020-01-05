@@ -1,0 +1,20 @@
+
+csquid:UselessImportCheck"3Remove this unused import 'android.text.TextUtils'.(û˜½Õøÿÿÿÿ8‘ëæ¯÷-
+\squid:S3398V">Move this method into the anonymous class declared at line 51.(½öÂ¢8¬¿¼±÷-
+nsquid:CommentedOutCodeLineP"<This block of commented-out lines of code should be removed.(º¹øÿÿÿÿ8¬¿¼±÷-
+osquid:S3008 "QRename this field "app_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×Ðš8¢“Ý¯÷-
+Nsquid:S1068""0Remove this unused "finalRecipes" private field.(óª±¯8™ º±÷-
+qsquid:S3008$"SRename this field "INSTANCE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Þ’ð8´Á§­÷-
+^squid:UselessImportCheck"4Remove this unused import 'android.app.Application'.(¢¶ÿI8’àÍ¯÷-
+psquid:S3008!"RRename this field "app_key" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à›ƒ¯8¢“Ý¯÷-
+Lsquid:S3077$".Remove the "volatile" keyword from this field.(‹Þ’ð8´Á§­÷-
+[
+squid:S106d"9Replace this use of System.out or System.err by a logger.(ô‡çøÿÿÿÿ8š¬Õ²÷-
+V
+squid:S106i"9Replace this use of System.out or System.err by a logger.(©ØÜ8ç¼Ô²÷-
+Ysquid:UselessImportCheck"/Remove this unused import 'retrofit2.Callback'.(ž›¨,8áÊ•¯÷-
+hsquid:CommentedOutCodeLinea"<This block of commented-out lines of code should be removed.(ìÚÓX8¬¿¼±÷-
+nsquid:CommentedOutCodeLinek"<This block of commented-out lines of code should be removed.(¨€ÿ¿þÿÿÿÿ8¬¿¼±÷-
+isquid:CommentedOutCodeLine;"<This block of commented-out lines of code should be removed.(ì…Îè8¬¿¼±÷-
+hsquid:CommentedOutCodeLineE"<This block of commented-out lines of code should be removed.(¼‡îi8Öªµ²÷-
+Isquid:S1602:",Remove useless curly braces around statement(Í¡‹J8Öªµ²÷-
