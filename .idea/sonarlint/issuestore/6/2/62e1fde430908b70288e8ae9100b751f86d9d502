@@ -1,8 +1,22 @@
 
-nsquid:CommentedOutCodeLine/"<This block of commented-out lines of code should be removed.(öÂÀ°þÿÿÿÿ8ûËè¯÷-
-Msquid:S1068&"0Remove this unused "editedRecipe" private field.(ïŒç?8ûËè¯÷-
-lsquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(²Ú±Ž8ÒÀÀ‰÷-
-†squid:S3252¨"gUse static access with "com.google.android.material.snackbar.BaseTransientBottomBar" for "LENGTH_LONG".(õ‰¯à8ÓÀÀ‰÷-
-squid:S1450!"^Remove the "recipeViewModel" field and declare it as a local variable in the relevant methods.(å¾øÿÿÿÿ8™”ý¯÷-
-Gsquid:S1604"(Make this anonymous inner class a lambda(”¡äÌ8ƒúú¯÷-
-isquid:CommentedOutCodeLineX"<This block of commented-out lines of code should be removed.(ˆßîÃ8™”ý¯÷-
+lsquid:MaximumInheritanceDepth""<This class has 6 parents which is greater than 5 authorized.(²Ú±Ž8ÒÀÀ‰÷-
+osquid:CommentedOutCodeLineð"<This block of commented-out lines of code should be removed.(¨€ÿ¿þÿÿÿÿ8»°Ñ¶÷-
+W
+squid:S106å"9Replace this use of System.out or System.err by a logger.( Ž8»°Ñ¶÷-
+osquid:CommentedOutCodeLineµ"<This block of commented-out lines of code should be removed.(÷›–Çûÿÿÿÿ8€³·÷-
+†squid:S3252°"gUse static access with "com.google.android.material.snackbar.BaseTransientBottomBar" for "LENGTH_LONG".(õ‰¯à8ÓÀÀ‰÷-
+isquid:CommentedOutCodeLineã"<This block of commented-out lines of code should be removed.(ìÚÓX8»°Ñ¶÷-
+asquid:UnusedPrivateMethodÔ"5Remove this unused private "fetchRecipesData" method.(¨á½8€³·÷-
+Msquid:S1068*"0Remove this unused "editedRecipe" private field.(ïŒç?8ûËè¯÷-
+nsquid:CommentedOutCodeLine6"<This block of commented-out lines of code should be removed.(öÂÀ°þÿÿÿÿ8ûËè¯÷-
+osquid:S3008,"QRename this field "app_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×Ðš8©ÓÖ¶÷-
+\
+squid:S106é"9Replace this use of System.out or System.err by a logger.(ô‡çøÿÿÿÿ8»°Ñ¶÷-
+nsquid:CommentedOutCodeLine+"<This block of commented-out lines of code should be removed.(”È«øÿÿÿÿ8“¸ ·÷-
+W
+squid:S106î"9Replace this use of System.out or System.err by a logger.(ð®€¶8»°Ñ¶÷-
+isquid:CommentedOutCodeLine_"<This block of commented-out lines of code should be removed.(ˆßîÃ8™”ý¯÷-
+jsquid:CommentedOutCodeLineÛ"<This block of commented-out lines of code should be removed.(ÆƒË“8»°Ñ¶÷-
+psquid:S3008-"RRename this field "app_key" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à›ƒ¯8©ÓÖ¶÷-
+Gsquid:S1604¥"(Make this anonymous inner class a lambda(”¡äÌ8ƒúú¯÷-
+hsquid:CommentedOutCodeLineæ"<This block of commented-out lines of code should be removed.(©é!8ƒØß¶÷-

@@ -1,2 +1,5 @@
 
-[squid:UselessImportCheck	"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8©Ò°÷-
+nsquid:CommentedOutCodeLine5"<This block of commented-out lines of code should be removed.(ÅÓº’øÿÿÿÿ8ìì·µ÷-
+isquid:CommentedOutCodeLine""<This block of commented-out lines of code should be removed.(‰Ë¿ß8ìì·µ÷-
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Õİ®8­ÿµµ÷-
+isquid:CommentedOutCodeLineI"<This block of commented-out lines of code should be removed.(â¶ì8ìì·µ÷-

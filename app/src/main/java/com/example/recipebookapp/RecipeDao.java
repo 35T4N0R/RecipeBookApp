@@ -30,5 +30,8 @@ public interface RecipeDao {
 
     @Query("SELECT * FROM recipe WHERE title LIKE :title")
     public List<Recipe> findRecipeWithTitle(String title);
+
+    @Query("SELECT * FROM recipe LIMIT 1")
+    public LiveData<Recipe[]> isEmpty();
 }
 

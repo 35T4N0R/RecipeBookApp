@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private RecipeViewModel recipeViewModel;
 
 
+
     public static final int NEW_RECIPE_ACTIVITY_REQUEST_CODE = 1;
     public static final int EDIT_RECIPE_ACTIVITY_REQUEST_CODE = 2;
     public static final String EXTRA_EDIT_RECIPE_TITLE = "bookTitle";
@@ -165,7 +166,16 @@ public class MainActivity extends AppCompatActivity {
         recipeViewModel.findAll().observe(this,new Observer<List<Recipe>>(){
             @Override
             public void onChanged(@Nullable final List<Recipe> recipes){
-                adapter.setRecipes(recipes);
+                if(recipes == null || recipes.isEmpty()){
+                    fetchRecipesData("chicken",0,5);
+                    fetchRecipesData("pasta",0,5);
+                    fetchRecipesData("pork",0,5);
+                    fetchRecipesData("rice",60,65);
+                    fetchRecipesData("beef",44,49);
+                }else{
+                    adapter.setRecipes(recipes);
+                }
+
             }
         });
 
@@ -177,13 +187,14 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-        //fetchRecipesData("chicken",0,5);
-        //fetchRecipesData("pasta",0,5);
-        //fetchRecipesData("pork",0,5);
-        //fetchRecipesData("rice",60,65);
-        //fetchRecipesData("beef",44,49);
-        //fetchRecipesData("fish",27,32);
+         /*if(recipeViewModel.isEmpty().getValue() == null){
+            fetchRecipesData("chicken",0,5);
+            fetchRecipesData("pasta",0,5);
+            fetchRecipesData("pork",0,5);
+            fetchRecipesData("rice",60,65);
+            fetchRecipesData("beef",44,49);
+            //fetchRecipesData("fish",27,32);
+         }*/
 
     }
 
@@ -210,15 +221,13 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     private void fetchRecipesData(String q, int from, int to){
+        //System.out.println("asdsadddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
+
         RecipeService recipeService = RetrofitInstance.getRetrofitInstance().create(RecipeService.class);
 
         Call<RecipeContainer> recipeApiCall = recipeService.findRecipes(q,app_id,app_key,from,to);
 
-
-
         //Ingredients i = new Ingredients(Arrays.asList(new String[]{"foo", "bar"}));
-
-
 
         recipeApiCall.enqueue(new retrofit2.Callback<RecipeContainer>(){
             @Override
@@ -226,18 +235,17 @@ public class MainActivity extends AppCompatActivity {
                 for(int i = 0; i < response.body().getRecipeList().size();i++){
                     //Log.d("MainActivity","elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo elo");
                     //finalRecipes.add(response.body().getRecipeList().get(i));
-                    System.out.println(response.body().getRecipeList().get(i).getOneRecipe().getRecipeId() + "elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo ");
+                    //System.out.println(response.body().getRecipeList().get(i).getOneRecipe().getRecipeId() + "elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo ");
                     //recipeTmp = new Recipe(response.body().getRecipeList().get(i).getOneRecipe().getTitle(),response.body().getRecipeList().get(i).getOneRecipe().getImageUrl(),response.body().getRecipeList().get(i).getOneRecipe().getSourceUrl());
                     Recipe recipeTmp = response.body().getRecipeList().get(i).getOneRecipe();
                     recipeViewModel.insert(recipeTmp);
-                    System.out.println("elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo elo");
+                    //System.out.println("elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo eoelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo eloelo elo elo elo elo leo elo");
                 }
             }
             @Override
             public void onFailure(Call<RecipeContainer> call, Throwable t){
-                System.out.println(t.getMessage()+ "nie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie ine");
-
-                //Snackbar.make(findViewById(R.id.coordinator_layout),"Something went wrong... Please try again later", Snackbar.LENGTH_LONG).show();
+                //System.out.println(t.getMessage()+ "nie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie inenie nie nie ine");
+                Snackbar.make(findViewById(R.id.coordinator_layout),"Something went wrong... Please try again later", Snackbar.LENGTH_LONG).show();
             }
         });
 

@@ -13,15 +13,21 @@ public class RecipeViewModel extends AndroidViewModel {
     private RecipeRepository recipeRepository;
 
     private LiveData<List<Recipe>> recipes;
+    private LiveData<Recipe[]> isEmpty;
 
     public RecipeViewModel(@NonNull Application application){
         super(application);
         recipeRepository = new RecipeRepository(application);
         recipes = recipeRepository.findAllRecipes();
+        isEmpty = recipeRepository.isEmpty();
     }
 
     public LiveData<List<Recipe>> findAll(){
         return recipes;
+    }
+
+    public LiveData<Recipe[]> isEmpty(){
+        return isEmpty;
     }
 
     public void insert(Recipe recipe){

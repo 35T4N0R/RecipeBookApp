@@ -1,2 +1,8 @@
 
-:squid:S1643"Use a StringBuilder instead.(Ó‡Ÿá8ÚÅ°÷-
+’squid:S1319"oThe type of the "list" object should be an interface such as "List" rather than the implementation "ArrayList".(àó­¿úÿÿÿÿ8¥†µ÷-
+[squid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8¥†µ÷-
+]squid:UselessImportCheck
+"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8¥†µ÷-
+squid:S1488"\Immediately return this expression instead of assigning it to the temporary variable "json".(´Œ›’øÿÿÿÿ8¥†µ÷-
+Xsquid:S1118":Add a private constructor to hide the implicit public one.(Â«²¢8¥†µ÷-
+“squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(·š™ãøÿÿÿÿ8¥†µ÷-
