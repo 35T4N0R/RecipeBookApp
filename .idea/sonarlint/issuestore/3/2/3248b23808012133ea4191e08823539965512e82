@@ -1,5 +1,4 @@
 
-nsquid:CommentedOutCodeLine5"<This block of commented-out lines of code should be removed.(ÅÓº’øÿÿÿÿ8ìì·µ÷-
-isquid:CommentedOutCodeLine""<This block of commented-out lines of code should be removed.(‰Ë¿ß8ìì·µ÷-
-isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(žÕÝ®8­ÿµµ÷-
-isquid:CommentedOutCodeLineI"<This block of commented-out lines of code should be removed.(â¶ì8ìì·µ÷-
+Œsquid:S4165""iRemove this useless assignment; "ingredients" already holds the assigned value along all execution paths.(·¢É±øÿÿÿÿ8Ç˜Ú÷-
+Žsquid:S13195"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¨ß´Ä8ãÇÚ÷-
+™squid:S1319I"vThe type of the "ingredients" object should be an interface such as "List" rather than the implementation "ArrayList".( û¦åûÿÿÿÿ8ãÇÚ÷-

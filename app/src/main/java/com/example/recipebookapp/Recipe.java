@@ -24,14 +24,14 @@ public class Recipe {
     @SerializedName("url")
     private String sourceUrl;
 
-    //@SerializedName("ingredientLines")
-    //private ArrayList<String> ingredients;
+    @SerializedName("ingredientLines")
+    private ArrayList<String> ingredients;
 
     public Recipe(String title, String imageUrl, String sourceUrl/*,ArrayList<String> ingredients*/){
         this.title = title;
         this.imageUrl = imageUrl;
         this.sourceUrl = sourceUrl;
-        //this.ingredients = ingredients;
+        this.ingredients = ingredients;
     }
 
     public int getRecipeId(){
@@ -50,9 +50,9 @@ public class Recipe {
         return this.sourceUrl;
     }
 
-    /*public ArrayList<String> getIngredients(){
+    public ArrayList<String> getIngredients(){
         return this.ingredients;
-    }*/
+    }
 
     public void setRecipeId(int recipeId){
         this.recipeId = recipeId;
@@ -70,7 +70,7 @@ public class Recipe {
         this.sourceUrl = sourceUrl;
     }
 
-    /*public void setIngredients(ArrayList<String> ingredients){
+    public void setIngredients(ArrayList<String> ingredients){
         this.ingredients = ingredients;
-    }*/
+    }
 }

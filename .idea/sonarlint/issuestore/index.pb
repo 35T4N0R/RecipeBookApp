@@ -27,3 +27,15 @@ p
 @app/src/main/java/com/example/recipebookapp/RecipeContainer.java,9\0\90ba01e50e31dde8be29bd13414a8fd0e51a23f6
 o
 ?app/src/main/java/com/example/recipebookapp/RecipeDatabase.java,2\6\2658cd325c70bf66176cd3fe1df282c6647b9c18
+‡
+Wapp/src/main/java/com/example/recipebookapp/ui/notifications/NotificationsFragment.java,8\a\8a66947706832bb7e9cba8484e20ac4dbe2d3b84
+
+Oapp/src/main/java/com/example/recipebookapp/ui/dashboard/DashboardFragment.java,6\b\6b4b0fdf01efdad64872cd1c318e8822fc438490
+€
+Papp/src/main/java/com/example/recipebookapp/ui/dashboard/DashboardViewModel.java,1\b\1b5d5e6043bdd859131b2aaabe3db16ce39e2a23
+v
+Fapp/src/main/java/com/example/recipebookapp/ui/home/HomeViewModel.java,e\a\ea2293f8f8b50dccb449aebe04395b1de31ad10c
+u
+Eapp/src/main/java/com/example/recipebookapp/ui/home/HomeFragment.java,0\e\0e8fb92d5944051706016fc5057d60093f269431
+p
+@app/src/main/java/com/example/recipebookapp/DetailsActivity.java,f\9\f93ad2bfb9990a07861c9540e08021ad61f15d97

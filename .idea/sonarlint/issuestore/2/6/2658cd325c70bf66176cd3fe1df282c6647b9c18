@@ -1,12 +1,8 @@
 
-nsquid:CommentedOutCodeLineb"<This block of commented-out lines of code should be removed.(©ªœËÿÿÿÿÿ8ÒôĞ¶÷-
-Psquid:S1068$"-Remove this unused "recipeTmp" private field.(€ˆã¿úÿÿÿÿ8òÌÒ¶÷-
+\squid:UselessImportCheck"1Remove this unused import 'android.app.Activity'.(‡ÊÍÆ8Ü‘Ú÷-
+]squid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8Ü‘Ú÷-
 ^squid:UselessImportCheck"4Remove this unused import 'android.app.Application'.(¢¶ÿI8’àÍ¯÷-
-qsquid:S3008&"SRename this field "INSTANCE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Ş’ğ8¬€Ê¶÷-
-nsquid:CommentedOutCodeLineM"<This block of commented-out lines of code should be removed.(ŒóÀåşÿÿÿÿ8Œş¶÷-
-Lsquid:S3077&".Remove the "volatile" keyword from this field.(‹Ş’ğ8´Á§­÷-
-Fsquid:S1481>"(Remove this unused "dao" local variable.(Õ¡Œç8Œş¶÷-
+Lsquid:S3077".Remove the "volatile" keyword from this field.(‹Ş’ğ8´Á§­÷-
+qsquid:S3008"SRename this field "INSTANCE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Ş’ğ8¬€Ê¶÷-
 csquid:UselessImportCheck"3Remove this unused import 'android.text.TextUtils'.(û˜½Õøÿÿÿÿ8‘ëæ¯÷-
-hsquid:CommentedOutCodeLine!"<This block of commented-out lines of code should be removed.(°À€b8‰ªÖ¶÷-
-nsquid:CommentedOutCodeLine\"<This block of commented-out lines of code should be removed.(º¹øÿÿÿÿ8éëµ¶÷-
-isquid:CommentedOutCodeLine="<This block of commented-out lines of code should be removed.(ì…Îè8¬¿¼±÷-
+nsquid:CommentedOutCodeLine5"<This block of commented-out lines of code should be removed.(ŒóÀåşÿÿÿÿ8áÊ±×÷-

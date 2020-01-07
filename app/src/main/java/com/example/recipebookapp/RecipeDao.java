@@ -28,8 +28,8 @@ public interface RecipeDao {
     @Query("SELECT * FROM recipe ORDER BY title")
     public LiveData<List<Recipe>> findAll();
 
-    @Query("SELECT * FROM recipe WHERE title LIKE :title")
-    public List<Recipe> findRecipeWithTitle(String title);
+    @Query("SELECT * FROM recipe WHERE recipeId LIKE :recipeId")
+    public LiveData<Recipe> findRecipeWithId(int recipeId);
 
     @Query("SELECT * FROM recipe LIMIT 1")
     public LiveData<Recipe[]> isEmpty();

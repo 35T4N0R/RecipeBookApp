@@ -26,6 +26,10 @@ public class RecipeRepository {
         return isEmpty;
     }
 
+    LiveData<Recipe> findRecipeWithId(int recipeId){
+        return recipeDao.findRecipeWithId(recipeId);
+    }
+
     void insert(Recipe recipe){
         RecipeDatabase.databaseWriteExecutor.execute(()->{
             recipeDao.insert(recipe);
