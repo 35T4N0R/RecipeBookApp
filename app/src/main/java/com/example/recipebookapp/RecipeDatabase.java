@@ -30,7 +30,7 @@ public abstract class RecipeDatabase extends RoomDatabase{
         if(INSTANCE == null){
             synchronized(RecipeDatabase.class){
                 if(INSTANCE == null){
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),RecipeDatabase.class, "recipe_db2").addCallback(sRoomDatabaseCallback).build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),RecipeDatabase.class, "recipe_db4").addCallback(sRoomDatabaseCallback).build();
                 }
             }
         }

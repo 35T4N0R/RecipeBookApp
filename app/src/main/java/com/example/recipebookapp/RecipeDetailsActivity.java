@@ -12,9 +12,12 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
@@ -44,6 +47,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         recipeImageView = findViewById(R.id.recipe_details_image);
         ingredientsListView = findViewById(R.id.recipe_details_ingredients);
         linkTextView = findViewById(R.id.recipe_details_link);
+
         recipeViewModel.findRecipeWithId(recipeId).observe(this,new Observer<Recipe>(){
             @Override
             public void onChanged(@Nullable final Recipe recipe){
@@ -55,6 +59,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                 }
                 listViewAdapter = new ArrayAdapter<String>(getBaseContext(),R.layout.recipe_details_ingredients_item,R.id.one_ingredient,recipe.getIngredients());
                 ingredientsListView.setAdapter(listViewAdapter);
+                setListViewHeightBasedOnChildren(ingredientsListView);
                 //Linkify.addLinks(linkTextView,Linkify.ALL);
                 linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
                 linkTextView.setText(Html.fromHtml("<a href=\""+recipe.getSourceUrl()+"\">Przepis</a>"));
@@ -70,4 +75,28 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             }
         });
     }
+    public static void setListViewHeightBasedOnChildren
+            (ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) return;
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.UNSPECIFIED);
+        int totalHeight = 0;
+        View view = null;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            view = listAdapter.getView(i, view, listView);
+            if (i == 0) view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+
+        params.height = totalHeight + 100 + (listView.getDividerHeight() *
+                (listAdapter.getCount()));
+
+        listView.setLayoutParams(params);
+        listView.requestLayout();
+    }
+
 }
