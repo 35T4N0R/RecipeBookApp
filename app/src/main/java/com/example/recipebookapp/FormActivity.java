@@ -121,6 +121,7 @@ public class FormActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 ingredients.remove(position);
                 ingredientsAdapter.notifyDataSetChanged();
+                setListViewHeightBasedOnChildren(ingredientsList);
                 return true;
             }
         });
@@ -128,8 +129,10 @@ public class FormActivity extends AppCompatActivity {
         checkImageUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                imageBitmap = null;
-                editedRecipe.setImageBitmap(null);
+                if(editedRecipe != null){
+                    imageBitmap = null;
+                    editedRecipe.setImageBitmap(null);
+                }
                 if(imageUrlEditText.getText().toString() != null){
                     Picasso.with(getBaseContext()).load(imageUrlEditText.getText().toString()).placeholder(R.drawable.ic_image_black_24dp).into(imageView);
                 } else{
@@ -178,8 +181,11 @@ public class FormActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if(intent.resolveActivity(getPackageManager()) != null){
-                    editedRecipe.setImageUrl(null);
-                    imageUrlEditText.setText(null);
+                    if(editedRecipe != null){
+                        editedRecipe.setImageUrl(null);
+                        imageUrlEditText.setText(null);
+                    }
+
                     startActivityForResult(intent,REQUEST_IMAGE_CAPTURE);
                 }
             }

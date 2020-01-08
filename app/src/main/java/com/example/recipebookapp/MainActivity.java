@@ -1,6 +1,10 @@
 package com.example.recipebookapp;
 
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,7 +30,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -35,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
 
     private RecipeViewModel recipeViewModel;
 
+    private float mAccel;
+    private float mAccelCurrent;
+    private float mAccelLast;
+    private SensorManager mSensorMgr;
+    private Random rnd;
+    private int recipesCount;
+    private ArrayList<Integer> recipesId = new ArrayList<Integer>();
 
 
     public static final int NEW_RECIPE_ACTIVITY_REQUEST_CODE = 1;
@@ -42,16 +56,75 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_EDIT_RECIPE_TITLE = "bookTitle";
     public static final String EXTRA_RECIPE_ID = "recipeId";
     private Recipe editedRecipe;
-    //private Recipe recipeTmp = new Recipe("test","","");
     private static String app_id = "5c4d239d";
     private static String app_key = "fbfcc1588959c5c95444569037fcf6c7";
 
-    //chicken 0-5
-    //pasta 0-5
-    //pork 0-5
-    //rice 60-65
-    //beef 44-49
-    //fish 27-32
+
+    private final SensorEventListener mSensorListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            float x = event.values[0];
+            float y = event.values[1];
+            float z = event.values[2];
+            mAccelLast = mAccelCurrent;
+            mAccelCurrent = (float) Math.sqrt((double)(Math.pow(x,2)+Math.pow(y,2)+Math.pow(z,2)));
+            float delta = mAccelCurrent - mAccelLast;
+            mAccel = mAccel * 0.9f + delta;
+
+            if(mAccel > 12){
+                rnd = new Random();
+                int id = rnd.nextInt(recipesId.size());
+                Intent intent = new Intent(MainActivity.this,RecipeDetailsActivity.class);
+                intent.putExtra("recipeId",recipesId.get(id));
+                startActivity(intent);
+                //Snackbar.make(findViewById(R.id.coordinator_layout),"Shake, shake, shake", Snackbar.LENGTH_LONG).show();
+
+            }
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+        }
+    };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSensorMgr.registerListener(mSensorListener,mSensorMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        mSensorMgr.unregisterListener(mSensorListener);
+        super.onPause();
+    }
+
+    /*@Override
+    public void onSensorChanged(SensorEvent event) {
+        if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
+            long curTime = System.currentTimeMillis();
+            if((curTime - mLastShakeTime) > MIN_TIME_BETWEEN_SHAKES_MILLISECS){
+
+                float x = event.values[0];
+                float y = event.values[1];
+                float z = event.values[2];
+
+                double acceleration = Math.sqrt(Math.pow(x,2) + Math.pow(y,2) + Math.pow(z,2)) - SensorManager.GRAVITY_EARTH;
+
+                if(acceleration > SHAKE_THRESHOLD){
+                    mLastShakeTime = curTime;
+                    Snackbar.make(findViewById(R.id.coordinator_layout),"Shake, shake, shake", Snackbar.LENGTH_LONG).show();
+
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }*/
 
     /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -157,7 +230,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        mSensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE);
+        Sensor accelerometer = mSensorMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mSensorMgr.registerListener(mSensorListener,accelerometer,SensorManager.SENSOR_DELAY_NORMAL);
+        mAccel = 0.00f;
+        mAccelCurrent = SensorManager.GRAVITY_EARTH;
+        mAccelLast = SensorManager.GRAVITY_EARTH;
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final RecipeAdapter adapter = new RecipeAdapter();
@@ -176,6 +254,9 @@ public class MainActivity extends AppCompatActivity {
                     fetchRecipesData("beef",44,49);
                     //fetchRecipesData("fish",27,32);
                 }else{
+                    for(Recipe r:recipes){
+                        recipesId.add(r.getRecipeId());
+                    }
                     adapter.setRecipes(recipes);
                 }
 
