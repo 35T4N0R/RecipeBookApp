@@ -57,17 +57,16 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == NEW_RECIPE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK){
-            Recipe book = new Recipe(data.getStringExtra(EditRecipeActivity.EXTRA_EDIT_Recipe_TITLE)));
-            recipeViewModel.insert(book);
+            Recipe recipe = new Recipe(data.getStringExtra(FormActivity.EXTRA_EDIT_RECIPE_TITLE)));
+            recipeViewModel.insert(recipe);
             Snackbar.make(findViewById(R.id.coordinator_layout),getString(R.string.recipe_added),Snackbar.LENGTH_LONG).show();
         }else if(requestCode == EDIT_RECIPE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             editedRecipe.setTitle(data.getStringExtra(EditRecipeActivity.EXTRA_EDIT_RECIPE_TITLE));
             recipeViewModel.update(editedRecipe);
-            /*Book editedBook = new Book(data.getStringExtra(EditBookActivity.EXTRA_EDIT_BOOK_TITLE),data.getStringExtra(EditBookActivity.EXTRA_EDIT_BOOK_AUTHOR));
+            Book editedBook = new Book(data.getStringExtra(EditBookActivity.EXTRA_EDIT_BOOK_TITLE),data.getStringExtra(EditBookActivity.EXTRA_EDIT_BOOK_AUTHOR));
             editedBook.setId(data.getExtras().getInt("bookId"));
             bookViewModel.update(editedBook);
             Snackbar.make(findViewById(R.id.coordinator_layout),getString(R.string.recipe_edited),Snackbar.LENGTH_LONG).show();
-
         }else{
             Toast.makeText(getApplicationContext(),R.string.empty_not_saved,Toast.LENGTH_LONG).show();
         }
@@ -89,7 +88,10 @@ public class MainActivity extends AppCompatActivity {
             recipeTitleTextView.setText(recipe.getTitle());
             if(recipe.getImageUrl() != null){
                 Picasso.with(itemView.getContext()).load(recipe.getImageUrl()).placeholder(R.drawable.ic_image_black_24dp).into(recipeImageView);
-            } else{
+            }else if(recipe.getImageBitmap() != null){
+                recipeImageView.setImageBitmap(recipe.getImageBitmap());
+            }
+            else{
                 recipeImageView.setImageResource(R.drawable.ic_image_black_24dp);
             }
 
@@ -184,7 +186,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this, FormActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -6,6 +6,7 @@ import android.app.Application;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -30,7 +31,7 @@ public abstract class RecipeDatabase extends RoomDatabase{
         if(INSTANCE == null){
             synchronized(RecipeDatabase.class){
                 if(INSTANCE == null){
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),RecipeDatabase.class, "recipe_db4").addCallback(sRoomDatabaseCallback).build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),RecipeDatabase.class, "recipe_db8").addCallback(sRoomDatabaseCallback).build();
                 }
             }
         }

@@ -54,7 +54,10 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                 titleTextView.setText(recipe.getTitle());
                 if(recipe.getImageUrl() != null){
                     Picasso.with(getBaseContext()).load(recipe.getImageUrl()).placeholder(R.drawable.ic_image_black_24dp).into(recipeImageView);
-                } else{
+                }else if(recipe.getImageBitmap() != null){
+                    recipeImageView.setImageBitmap(recipe.getImageBitmap());
+                }
+                else{
                     recipeImageView.setImageResource(R.drawable.ic_image_black_24dp);
                 }
                 listViewAdapter = new ArrayAdapter<String>(getBaseContext(),R.layout.recipe_details_ingredients_item,R.id.one_ingredient,recipe.getIngredients());

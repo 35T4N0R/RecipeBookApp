@@ -1,6 +1,8 @@
 package com.example.recipebookapp;
 
 
+import android.graphics.Bitmap;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -27,11 +29,14 @@ public class Recipe {
     @SerializedName("ingredientLines")
     private ArrayList<String> ingredients;
 
-    public Recipe(String title, String imageUrl, String sourceUrl/*,ArrayList<String> ingredients*/){
+    private Bitmap imageBitmap;
+
+    public Recipe(String title, String imageUrl, String sourceUrl, ArrayList<String> ingredients){
         this.title = title;
         this.imageUrl = imageUrl;
         this.sourceUrl = sourceUrl;
         this.ingredients = ingredients;
+        this.imageBitmap = null;
     }
 
     public int getRecipeId(){
@@ -52,6 +57,14 @@ public class Recipe {
 
     public ArrayList<String> getIngredients(){
         return this.ingredients;
+    }
+
+    public Bitmap getImageBitmap(){
+        return this.imageBitmap;
+    }
+
+    public void setImageBitmap(Bitmap imageBitmap){
+        this.imageBitmap = imageBitmap;
     }
 
     public void setRecipeId(int recipeId){
