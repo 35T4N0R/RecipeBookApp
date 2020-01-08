@@ -79,7 +79,7 @@
         android:layout_centerInParent="true"
         >
     <Button
-        android:layout_width="190dp"
+        android:layout_width="205dp"
         android:layout_height="50dp"
         android:id="@+id/recipe_details_edit_button"
         android:layout_gravity="bottom|end"

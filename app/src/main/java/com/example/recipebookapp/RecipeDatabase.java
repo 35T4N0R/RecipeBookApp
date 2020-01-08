@@ -1,12 +1,7 @@
 package com.example.recipebookapp;
 
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
-import android.text.TextUtils;
-import android.util.Log;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -19,7 +14,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {Recipe.class}, version = 1, exportSchema = false)
-@TypeConverters({IngredientsConverter.class})
+@TypeConverters({Converter.class})
 public abstract class RecipeDatabase extends RoomDatabase{
     public abstract RecipeDao recipeDao();
 
@@ -31,7 +26,7 @@ public abstract class RecipeDatabase extends RoomDatabase{
         if(INSTANCE == null){
             synchronized(RecipeDatabase.class){
                 if(INSTANCE == null){
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),RecipeDatabase.class, "recipe_db8").addCallback(sRoomDatabaseCallback).build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),RecipeDatabase.class, "recipe_db11").addCallback(sRoomDatabaseCallback).build();
                 }
             }
         }
@@ -50,9 +45,6 @@ public abstract class RecipeDatabase extends RoomDatabase{
                 //rice 60-65
                 //beef 44-49
                 //fish 27-32
-
-                //Recipe r = new Recipe("test",null,null);
-                //dao.insert(r);
         });
         }
     };

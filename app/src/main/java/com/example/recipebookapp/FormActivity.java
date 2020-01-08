@@ -2,6 +2,7 @@ package com.example.recipebookapp;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -20,6 +22,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -44,6 +47,11 @@ public class FormActivity extends AppCompatActivity {
     private Button saveRecipeButton;
     private EditText sourceUrlEditText;
     private Bitmap imageBitmap;
+    private int recipeId;
+    private String title;
+    private String imageUrl;
+    private String source;
+    private Recipe editedRecipe;
 
 
     @Override
@@ -52,7 +60,10 @@ public class FormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_form);
         getSupportActionBar().setTitle("Form");
 
+
+
         recipeViewModel = ViewModelProviders.of(this).get(RecipeViewModel.class);
+
 
         titleEditText = findViewById(R.id.title_edit_text);
         ingredientEditText = findViewById(R.id.ingredient_edit_text);
@@ -69,14 +80,56 @@ public class FormActivity extends AppCompatActivity {
 
         ingredients = new ArrayList<String>();
 
-        ingredientsAdapter = new ArrayAdapter<String>(getBaseContext(),R.layout.recipe_details_ingredients_item,R.id.one_ingredient,ingredients);
 
-        ingredientsList.setAdapter(ingredientsAdapter);
-        setListViewHeightBasedOnChildren(ingredientsList);
+
+
+
+        if( getIntent().hasExtra("recipeId")){
+            recipeId = getIntent().getExtras().getInt("recipeId");
+
+            recipeViewModel.findRecipeWithId(recipeId).observe(this, new Observer<Recipe>() {
+                @Override
+                public void onChanged(Recipe recipe) {
+                    editedRecipe = recipe;
+                    titleEditText.setText(recipe.getTitle());
+                    imageUrlEditText.setText(recipe.getImageUrl());
+                    sourceUrlEditText.setText(recipe.getSourceUrl());
+                    ingredients = recipe.getIngredients();
+                    ingredientsAdapter = new ArrayAdapter<String>(getBaseContext(),R.layout.recipe_details_ingredients_item,R.id.one_ingredient,ingredients);
+                    ingredientsList.setAdapter(ingredientsAdapter);
+                    setListViewHeightBasedOnChildren(ingredientsList);
+                    if(recipe.getImageUrl() != null){
+                        Picasso.with(getBaseContext()).load(recipe.getImageUrl()).placeholder(R.drawable.ic_image_black_24dp).into(imageView);
+                    }else if(recipe.getImageBitmap() != null){
+                        imageView.setImageBitmap(recipe.getImageBitmap());
+                    }
+                    else{
+                        imageView.setImageResource(R.drawable.ic_image_black_24dp);
+                    }
+                }
+            });
+        }else{
+            ingredientsAdapter = new ArrayAdapter<String>(getBaseContext(),R.layout.recipe_details_ingredients_item,R.id.one_ingredient,ingredients);
+
+            ingredientsList.setAdapter(ingredientsAdapter);
+            setListViewHeightBasedOnChildren(ingredientsList);
+        }
+
+
+        ingredientsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                ingredients.remove(position);
+                ingredientsAdapter.notifyDataSetChanged();
+                return true;
+            }
+        });
 
         checkImageUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                imageBitmap = null;
+                editedRecipe.setImageBitmap(null);
                 if(imageUrlEditText.getText().toString() != null){
                     Picasso.with(getBaseContext()).load(imageUrlEditText.getText().toString()).placeholder(R.drawable.ic_image_black_24dp).into(imageView);
                 } else{
@@ -125,6 +178,8 @@ public class FormActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if(intent.resolveActivity(getPackageManager()) != null){
+                    editedRecipe.setImageUrl(null);
+                    imageUrlEditText.setText(null);
                     startActivityForResult(intent,REQUEST_IMAGE_CAPTURE);
                 }
             }
@@ -134,17 +189,42 @@ public class FormActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                imageUrl = imageUrlEditText.getText().toString();
+                title = titleEditText.getText().toString();
+                source = sourceUrlEditText.getText().toString();
 
-
-                String imageUrl = imageUrlEditText.getText().toString();
                 if(imageUrl.isEmpty()) imageUrl = null;
+                if(title.isEmpty()) title = null;
+                if(source.isEmpty()) source = null;
 
-                Recipe recipe = new Recipe(titleEditText.getText().toString(),imageUrl,sourceUrlEditText.getText().toString(),ingredients);
-                recipe.setImageBitmap(imageBitmap);
-                recipeViewModel.insert(recipe);
+                if(!getIntent().hasExtra("recipeId")){
 
-                Intent intent = new Intent(FormActivity.this,MainActivity.class);
-                startActivity(intent);
+                    if(title != null){
+                        Recipe recipe = new Recipe(title,imageUrl,source,ingredients);
+                        recipe.setImageBitmap(imageBitmap);
+                        recipeViewModel.insert(recipe);
+
+                        Intent intent = new Intent(FormActivity.this,MainActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Snackbar.make(findViewById(R.id.form_layout),"Musisz przynajmniej wpisac tytul przepisu", Snackbar.LENGTH_LONG).show();
+
+                    }
+                }else{
+                    editedRecipe.setTitle(title);
+                    editedRecipe.setSourceUrl(source);
+                    editedRecipe.setImageBitmap(imageBitmap);
+                    editedRecipe.setImageUrl(imageUrl);
+                    editedRecipe.setIngredients(ingredients);
+                    recipeViewModel.update(editedRecipe);
+                    Intent intent = new Intent(FormActivity.this,RecipeDetailsActivity.class);
+                    intent.putExtra("recipeId", recipeId);
+                    startActivity(intent);
+
+                }
+
+
+
             }
         });
 
