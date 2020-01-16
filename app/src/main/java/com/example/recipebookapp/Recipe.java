@@ -31,12 +31,15 @@ public class Recipe {
 
     private Bitmap imageBitmap;
 
+    private String description;
+
     public Recipe(String title, String imageUrl, String sourceUrl, ArrayList<String> ingredients){
         this.title = title;
         this.imageUrl = imageUrl;
         this.sourceUrl = sourceUrl;
         this.ingredients = ingredients;
         this.imageBitmap = null;
+        this.description = null;
     }
 
     public int getRecipeId(){
@@ -63,6 +66,10 @@ public class Recipe {
         return this.imageBitmap;
     }
 
+    public String getDescription(){
+        return this.description;
+    }
+
     public void setImageBitmap(Bitmap imageBitmap){
         this.imageBitmap = imageBitmap;
     }
@@ -85,5 +92,9 @@ public class Recipe {
 
     public void setIngredients(ArrayList<String> ingredients){
         this.ingredients = ingredients;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
     }
 }

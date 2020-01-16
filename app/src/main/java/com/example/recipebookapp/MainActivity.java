@@ -1,10 +1,14 @@
 package com.example.recipebookapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -15,11 +19,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,9 +35,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -40,12 +45,21 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     private RecipeViewModel recipeViewModel;
 
     private float mAccel;
     private float mAccelCurrent;
     private float mAccelLast;
     private SensorManager mSensorMgr;
+
+    private Sensor accelerometer;
+
+    private Sensor light;
+    private int brightness;
+    private float maxValue;
+
     private Random rnd;
     private int recipesCount;
     private ArrayList<Integer> recipesId = new ArrayList<Integer>();
@@ -56,11 +70,13 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_EDIT_RECIPE_TITLE = "bookTitle";
     public static final String EXTRA_RECIPE_ID = "recipeId";
     private Recipe editedRecipe;
+    Handler handler = new Handler();
+
     private static String app_id = "5c4d239d";
     private static String app_key = "fbfcc1588959c5c95444569037fcf6c7";
 
 
-    private final SensorEventListener mSensorListener = new SensorEventListener() {
+    private final SensorEventListener accelSensorListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
             float x = event.values[0];
@@ -87,16 +103,46 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+    private final SensorEventListener lightSensorListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+
+            float value = event.values[0];
+            CoordinatorLayout root = findViewById(R.id.coordinator_layout);
+            TextView txt = findViewById(R.id.sensor);
+            txt.setText(value+"");
+            /*handler.postDelayed(new Runnable() {
+                public void run() {
+                    root.setBackgroundColor(getResources().getColor(R.color.light_green));
+                }
+            }, 1000);
+
+            root.setBackgroundColor(Color.WHITE);*/
+            value /= 5;
+            int newValue = (int) (255f * (value + 10)/ 30);
+            if(newValue >= 255) newValue = 255;
+            root.setBackgroundColor(Color.rgb(newValue, newValue, newValue));
+
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+        }
+    };
 
     @Override
     protected void onResume() {
         super.onResume();
-        mSensorMgr.registerListener(mSensorListener,mSensorMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),SensorManager.SENSOR_DELAY_NORMAL);
+
+        mSensorMgr.registerListener(accelSensorListener,accelerometer,SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorMgr.registerListener(lightSensorListener,light,SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
     protected void onPause() {
-        mSensorMgr.unregisterListener(mSensorListener);
+        mSensorMgr.unregisterListener(accelSensorListener);
+        mSensorMgr.unregisterListener(lightSensorListener);
         super.onPause();
     }
 
@@ -225,14 +271,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         mSensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE);
-        Sensor accelerometer = mSensorMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        mSensorMgr.registerListener(mSensorListener,accelerometer,SensorManager.SENSOR_DELAY_NORMAL);
+
+        accelerometer = mSensorMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        light = mSensorMgr.getDefaultSensor(Sensor.TYPE_LIGHT);
+        maxValue = light.getMaximumRange();
+
+        mSensorMgr.registerListener(accelSensorListener,accelerometer,SensorManager.SENSOR_DELAY_NORMAL);
         mAccel = 0.00f;
         mAccelCurrent = SensorManager.GRAVITY_EARTH;
         mAccelLast = SensorManager.GRAVITY_EARTH;
@@ -316,4 +370,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
 }

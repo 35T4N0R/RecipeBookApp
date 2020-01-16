@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProviders;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
@@ -19,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -42,6 +45,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     private Button editButton;
     private Button deleteButton;
     private Recipe deletedRecipe;
+    private TextView descriptionTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +56,14 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Details");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLUE));
 
         int recipeId = getIntent().getExtras().getInt("recipeId");
         titleTextView = findViewById(R.id.recipe_details_title);
         recipeImageView = findViewById(R.id.recipe_details_image);
         ingredientsListView = findViewById(R.id.recipe_details_ingredients);
         linkTextView = findViewById(R.id.recipe_details_link);
+        descriptionTextView = findViewById(R.id.details_description);
         deleteButton = findViewById(R.id.recipe_details_delete_button);
         editButton = findViewById(R.id.recipe_details_edit_button);
         editButton.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +91,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                 deletedRecipe = recipe;
                 if(recipe != null){
                     titleTextView.setText(recipe.getTitle());
+                    descriptionTextView.setText(recipe.getDescription());
                     if(recipe.getImageUrl() != null){
                         Picasso.with(getBaseContext()).load(recipe.getImageUrl()).placeholder(R.drawable.ic_image_black_24dp).into(recipeImageView);
                     }else if(recipe.getImageBitmap() != null){

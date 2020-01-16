@@ -13,4 +13,6 @@
     <string name="details_ingredients">Składniki</string>
     <string name="edit_button">Edytuj</string>
     <string name="delete_button">Usuń</string>
+    <string name="description_hint">Opis ...</string>
+    <string name="details_description">Opis</string>
 </resources>

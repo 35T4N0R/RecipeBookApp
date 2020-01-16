@@ -28,6 +28,11 @@
         tools:context=".MainActivity"
         android:paddingTop="@dimen/main_from_top">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sensor"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="@dimen/main_recycler_view_0dp"

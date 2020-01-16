@@ -51,7 +51,9 @@ public class FormActivity extends AppCompatActivity {
     private String title;
     private String imageUrl;
     private String source;
+    private String description;
     private Recipe editedRecipe;
+    private EditText descriptionEditText;
 
 
     @Override
@@ -77,6 +79,7 @@ public class FormActivity extends AppCompatActivity {
         checkImageUrl = findViewById(R.id.check_image_url);
         saveRecipeButton = findViewById(R.id.save_recipe_button);
         sourceUrlEditText = findViewById(R.id.source_url);
+        descriptionEditText = findViewById(R.id.recipe_description);
 
         ingredients = new ArrayList<String>();
 
@@ -92,6 +95,7 @@ public class FormActivity extends AppCompatActivity {
                 public void onChanged(Recipe recipe) {
                     editedRecipe = recipe;
                     titleEditText.setText(recipe.getTitle());
+                    descriptionEditText.setText(recipe.getDescription());
                     imageUrlEditText.setText(recipe.getImageUrl());
                     sourceUrlEditText.setText(recipe.getSourceUrl());
                     ingredients = recipe.getIngredients();
@@ -133,7 +137,7 @@ public class FormActivity extends AppCompatActivity {
                     imageBitmap = null;
                     editedRecipe.setImageBitmap(null);
                 }
-                if(imageUrlEditText.getText().toString() != null){
+                if(imageUrlEditText.getText().toString() != null && !imageUrlEditText.getText().toString().isEmpty()){
                     Picasso.with(getBaseContext()).load(imageUrlEditText.getText().toString()).placeholder(R.drawable.ic_image_black_24dp).into(imageView);
                 } else{
                     imageView.setImageResource(R.drawable.ic_image_black_24dp);
@@ -198,16 +202,19 @@ public class FormActivity extends AppCompatActivity {
                 imageUrl = imageUrlEditText.getText().toString();
                 title = titleEditText.getText().toString();
                 source = sourceUrlEditText.getText().toString();
+                description = descriptionEditText.getText().toString();
 
                 if(imageUrl.isEmpty()) imageUrl = null;
                 if(title.isEmpty()) title = null;
                 if(source.isEmpty()) source = null;
+                if(description.isEmpty()) description = null;
 
                 if(!getIntent().hasExtra("recipeId")){
 
                     if(title != null){
                         Recipe recipe = new Recipe(title,imageUrl,source,ingredients);
                         recipe.setImageBitmap(imageBitmap);
+                        recipe.setDescription(description);
                         recipeViewModel.insert(recipe);
 
                         Intent intent = new Intent(FormActivity.this,MainActivity.class);
@@ -218,6 +225,7 @@ public class FormActivity extends AppCompatActivity {
                     }
                 }else{
                     editedRecipe.setTitle(title);
+                    editedRecipe.setDescription(description);
                     editedRecipe.setSourceUrl(source);
                     editedRecipe.setImageBitmap(imageBitmap);
                     editedRecipe.setImageUrl(imageUrl);
