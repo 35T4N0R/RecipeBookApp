@@ -1,11 +1,17 @@
 
-isquid:CommentedOutCodeLinea"<This block of commented-out lines of code should be removed.(ˆßîÃ8™”ý¯÷-
-†squid:S3252å"gUse static access with "com.google.android.material.snackbar.BaseTransientBottomBar" for "LENGTH_LONG".(“Ð¡æ8Ñã‹Ú÷-
-Msquid:S1068,"0Remove this unused "editedRecipe" private field.(ïŒç?8ûËè¯÷-
-nsquid:CommentedOutCodeLine8"<This block of commented-out lines of code should be removed.(öÂÀ°þÿÿÿÿ8ûËè¯÷-
-osquid:S3008."QRename this field "app_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×Ðš8©ÓÖ¶÷-
-lsquid:MaximumInheritanceDepth""<This class has 6 parents which is greater than 5 authorized.(²Ú±Ž8ÒÀÀ‰÷-
-¥squid:S1186¹"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ð¸™áúÿÿÿÿ8ºŸÃÚ÷-
-Gsquid:S1604¦"(Make this anonymous inner class a lambda(”¡äÌ8ƒúú¯÷-
-nsquid:CommentedOutCodeLine-"<This block of commented-out lines of code should be removed.(”È«øÿÿÿÿ8“¸ ·÷-
-psquid:S3008/"RRename this field "app_key" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à›ƒ¯8©ÓÖ¶÷-
+wsquid:S22933"YReplace the type specification in this constructor call with the diamond operator ("<>").(ì¶¡“8±óÞ¡ú-
+Ÿsquid:S1186V"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÐŠß±8±óÞ¡ú-
+†squid:S3252º"gUse static access with "com.google.android.material.snackbar.BaseTransientBottomBar" for "LENGTH_LONG".(“Ð¡æ8Ñã‹Ú÷-
+Vsquid:UselessImportCheck!"+Remove this unused import 'java.sql.Array'.(Õø‹ù8±óÞ¡ú-
+psquid:S3008<"RRename this field "app_key" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à›ƒ¯8©ÓÖ¶÷-
+Msquid:S1068:"0Remove this unused "editedRecipe" private field.(ïŒç?8ûËè¯÷-
+jsquid:CommentedOutCodeLine¬"<This block of commented-out lines of code should be removed.(ˆßîÃ8™”ý¯÷-
+nsquid:CommentedOutCodeLineh"<This block of commented-out lines of code should be removed.(¡Ž¯âþÿÿÿÿ8±óÞ¡ú-
+Ssquid:S10682"0Remove this unused "recipesCount" private field.(Æ±§Èùÿÿÿÿ8±óÞ¡ú-
+osquid:CommentedOutCodeLineÿ"<This block of commented-out lines of code should be removed.(µ“Þýÿÿÿÿ8Ñã„þ÷-
+isquid:CommentedOutCodeLineP"<This block of commented-out lines of code should be removed.(“ÓóÓ8±óÞ¡ú-
+ssquid:S1192N"UUse already-defined constant 'EXTRA_RECIPE_ID' instead of duplicating its value here.(ò¡Ñ»8±óÞ¡ú-
+osquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(öÂÀ°þÿÿÿÿ8ûËè¯÷-
+Gsquid:S1604ö"(Make this anonymous inner class a lambda(”¡äÌ8ƒúú¯÷-
+osquid:S3008;"QRename this field "app_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×Ðš8©ÓÖ¶÷-
+lsquid:MaximumInheritanceDepth)"<This class has 6 parents which is greater than 5 authorized.(²Ú±Ž8ÒÀÀ‰÷-

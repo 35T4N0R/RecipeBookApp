@@ -26,12 +26,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity"
-        android:paddingTop="50dp">
+        android:paddingTop="@dimen/main_from_top">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/main_recycler_view_0dp"
+        android:layout_height="@dimen/main_recycler_view_0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -47,6 +47,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_add_black_24dp" />
+        app:srcCompat="@drawable/ic_add_black_24dp"
+        app:backgroundTint="@color/light_green"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

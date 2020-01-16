@@ -1,0 +1,12 @@
+
+nsquid:UselessImportCheck">Remove this unused import 'androidx.appcompat.widget.Toolbar'.(ÔËûİùÿÿÿÿ8šÎ‘ø-
+asquid:UselessImportCheck"1Remove this unused import 'java.text.Normalizer'.(‡âÌ€øÿÿÿÿ8ôŞ¡ú-
+esquid:MaximumInheritanceDepth""<This class has 6 parents which is greater than 5 authorized.(Ïê®¥
+wsquid:S1450*"YRemove the "editButton" field and declare it as a local variable in the relevant methods.(•²²é8ôŞ¡ú-
+\squid:UselessImportCheck",Remove this unused import 'android.net.Uri'.(òêû‘ıÿÿÿÿ8ôŞ¡ú-
+vsquid:S2293`"YReplace the type specification in this constructor call with the diamond operator ("<>").(œŠÊ8³±îÿ÷-
+[squid:UselessImportCheck "+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ôŞ¡ú-
+fsquid:UselessImportCheck"6Remove this unused import 'android.text.util.Linkify'.(ƒÓŞ¢ıÿÿÿÿ8ôŞ¡ú-
+Ksquid:S1604R"(Make this anonymous inner class a lambda(ß®Ü¯ıÿÿÿÿ8³±îÿ÷-
+~squid:S1450+"[Remove the "deleteButton" field and declare it as a local variable in the relevant methods.(ŸÍãëüÿÿÿÿ8ôŞ¡ú-
+jsquid:UselessImportCheck":Remove this unused import 'android.widget.RelativeLayout'.(ü¯ğõşÿÿÿÿ8ôŞ¡ú-

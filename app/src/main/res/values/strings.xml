@@ -2,4 +2,15 @@
     <string name="app_name">RecipeBookApp</string>
     <string name="action_settings">Settings</string>
     <string name="recipe_added">Przepis zostal dodany pomyslnie</string>
+    <string name="image_url_hint">Image URL ...</string>
+    <string name="check_photo">Sprawdź zdjęcie</string>
+    <string name="radio_button_url">URL</string>
+    <string name="radio_button_camera">Aparat</string>
+    <string name="save_form">Zapisz</string>
+    <string name="source_url_hint">URL źródła ...</string>
+    <string name="ingredients_hint">Składnik ...</string>
+    <string name="title_hint">Tytuł ...</string>
+    <string name="details_ingredients">Składniki</string>
+    <string name="edit_button">Edytuj</string>
+    <string name="delete_button">Usuń</string>
 </resources>

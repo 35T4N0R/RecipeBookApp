@@ -1,8 +1,3 @@
 
-\squid:UselessImportCheck"1Remove this unused import 'android.app.Activity'.(‡ÊÍÆ8Ü‘ŽÚ÷-
-]squid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8Ü‘ŽÚ÷-
-^squid:UselessImportCheck"4Remove this unused import 'android.app.Application'.(¢¶ÿI8’àÍ¯÷-
-Lsquid:S3077".Remove the "volatile" keyword from this field.(‹Þ’ð8´Á§­÷-
-qsquid:S3008"SRename this field "INSTANCE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Þ’ð8¬€Ê¶÷-
-csquid:UselessImportCheck"3Remove this unused import 'android.text.TextUtils'.(û˜½Õøÿÿÿÿ8‘ëæ¯÷-
-nsquid:CommentedOutCodeLine5"<This block of commented-out lines of code should be removed.(ŒóÀåþÿÿÿÿ8áÊ±×÷-
+qsquid:S3008"SRename this field "INSTANCE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹Þ’ð8¬€Ê¶÷-
+Lsquid:S3077".Remove the "volatile" keyword from this field.(‹Þ’ð8´Á§­÷-

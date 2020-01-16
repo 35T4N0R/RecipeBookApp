@@ -1,6 +1,0 @@
-
-Ksquid:S1604%"(Make this anonymous inner class a lambda(φΤ°Ζύÿÿÿÿ8τλάχ-
-]squid:UselessImportCheck"3Remove this unused import 'android.content.Intent'.(³π‹G8Λ³³άχ-
-squid:S1450"^Remove the "recipeViewModel" field and declare it as a local variable in the relevant methods.(εΎψÿÿÿÿ8Ή“νάχ-
-isquid:UselessImportCheck"9Remove this unused import 'androidx.lifecycle.ViewModel'.(ΫÒΪ“ϊÿÿÿÿ8Ή“νάχ-
-squid:S1450"\Remove the "homeViewModel" field and declare it as a local variable in the relevant methods.(Ώ­¶όÿÿÿÿ8ΚηΫχ-

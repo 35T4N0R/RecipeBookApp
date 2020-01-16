@@ -1,7 +1,0 @@
-
-nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÙùäÛûÿÿÿÿ8Šþ¨Ü÷-
-Osquid:S1602%",Remove useless curly braces around statement(‹×è€þÿÿÿÿ8„³ÅÜ÷-
-Vsquid:S1068"3Remove this unused "recipeViewModel" private field.(å¾øÿÿÿÿ8Šþ¨Ü÷-
-gsquid:UselessImportCheck"<Remove this unused import 'androidx.navigation.NavArgument'.(Žññ8ž×Û÷-
-jsquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(ÇÄ‘êýÿÿÿÿ
-nsquid:CommentedOutCodeLine#"<This block of commented-out lines of code should be removed.(÷µÇþÿÿÿÿ8ê³çÜ÷-
