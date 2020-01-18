@@ -129,7 +129,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/open_camera_button"
         android:drawableStart="@drawable/ic_photo_camera_black_24dp"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        />
 
 
 </RelativeLayout>

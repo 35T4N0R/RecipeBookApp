@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             value /= 5;
             int newValue = (int) (255f * (value + 10)/ 30);
             if(newValue >= 255) newValue = 255;
-            root.setBackgroundColor(Color.rgb(newValue, newValue, newValue));
+            //root.setBackgroundColor(Color.rgb(newValue, newValue, newValue));
 
         }
 

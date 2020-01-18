@@ -3,7 +3,6 @@
     package="com.example.recipebookapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"></uses-permission>
 
 
     <application

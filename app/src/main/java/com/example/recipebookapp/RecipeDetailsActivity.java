@@ -56,7 +56,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Details");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLUE));
+        //actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
 
         int recipeId = getIntent().getExtras().getInt("recipeId");
         titleTextView = findViewById(R.id.recipe_details_title);
@@ -140,7 +140,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     public AlertDialog buildAlert(){
         AlertDialog.Builder confirmDeleteBuilder = new AlertDialog.Builder(this);
         confirmDeleteBuilder.setMessage("Czy na pewno chcesz usunąć ten przepis ?");
-        confirmDeleteBuilder.setTitle("Potwierdzenie usunięcia");
+        //confirmDeleteBuilder.setTitle("Potwierdzenie usunięcia");
         confirmDeleteBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
