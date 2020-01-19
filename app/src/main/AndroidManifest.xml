@@ -3,7 +3,7 @@
     package="com.example.recipebookapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
 
     <application
         android:allowBackup="true"
@@ -11,13 +11,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/dark_theme">
         <activity android:name=".FormActivity"></activity>
         <activity android:name=".RecipeDetailsActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/dark_theme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

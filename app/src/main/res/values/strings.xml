@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">RecipeBookApp</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Opcje</string>
     <string name="recipe_added">Przepis zostal dodany pomyslnie</string>
-    <string name="image_url_hint">Image URL ...</string>
+    <string name="image_url_hint">URL Zdjęcia ...</string>
     <string name="check_photo">Sprawdź zdjęcie</string>
     <string name="radio_button_url">URL</string>
     <string name="radio_button_camera">Aparat</string>
@@ -15,4 +15,10 @@
     <string name="delete_button">Usuń</string>
     <string name="description_hint">Opis ...</string>
     <string name="details_description">Opis</string>
+    <string name="snackbar_light">Jasno tu. Zwiększam jasność ekranu</string>
+    <string name="snackbar_dark">Ciemno tu. Zmniejszam jasność ekranu</string>
+    <string name="recipe_delete_confirmation">Czy na pewno chcesz usunąć ten przepis ?</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
+    <string name="recipe">Przepis</string>
 </resources>

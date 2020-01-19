@@ -104,7 +104,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                     ingredientsListView.setAdapter(listViewAdapter);
                     setListViewHeightBasedOnChildren(ingredientsListView);
                     linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
-                    linkTextView.setText(Html.fromHtml("<a href=\""+recipe.getSourceUrl()+"\">Przepis</a>"));
+                    linkTextView.setText(Html.fromHtml("<a href=\""+recipe.getSourceUrl()+"\">"+getString(R.string.recipe)+"</a>"));
                 }
 
             }
@@ -139,15 +139,14 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
     public AlertDialog buildAlert(){
         AlertDialog.Builder confirmDeleteBuilder = new AlertDialog.Builder(this);
-        confirmDeleteBuilder.setMessage("Czy na pewno chcesz usunąć ten przepis ?");
-        //confirmDeleteBuilder.setTitle("Potwierdzenie usunięcia");
-        confirmDeleteBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+        confirmDeleteBuilder.setMessage(R.string.recipe_delete_confirmation);
+        confirmDeleteBuilder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
         });
-        confirmDeleteBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+        confirmDeleteBuilder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 recipeViewModel.delete(deletedRecipe);

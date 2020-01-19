@@ -1,14 +1,20 @@
 package com.example.recipebookapp;
 
+import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Application;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -33,6 +39,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,7 +53,12 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    //Variable to store brightness value
+    private int brightness;
+    //Content resolver used as a handle to the system's settings
+    private ContentResolver cResolver;
+    //Window object, that will store a reference to the current window
+    private Window window;
 
     private RecipeViewModel recipeViewModel;
 
@@ -57,23 +70,19 @@ public class MainActivity extends AppCompatActivity {
     private Sensor accelerometer;
 
     private Sensor light;
-    private int brightness;
     private float maxValue;
 
     private Random rnd;
-    private int recipesCount;
     private ArrayList<Integer> recipesId = new ArrayList<Integer>();
 
-
-    public static final int NEW_RECIPE_ACTIVITY_REQUEST_CODE = 1;
-    public static final int EDIT_RECIPE_ACTIVITY_REQUEST_CODE = 2;
-    public static final String EXTRA_EDIT_RECIPE_TITLE = "bookTitle";
     public static final String EXTRA_RECIPE_ID = "recipeId";
-    private Recipe editedRecipe;
     Handler handler = new Handler();
 
     private static String app_id = "5c4d239d";
     private static String app_key = "fbfcc1588959c5c95444569037fcf6c7";
+
+    float value;
+
 
 
     private final SensorEventListener accelSensorListener = new SensorEventListener() {
@@ -93,8 +102,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,RecipeDetailsActivity.class);
                 intent.putExtra("recipeId",recipesId.get(id));
                 startActivity(intent);
-                //Snackbar.make(findViewById(R.id.coordinator_layout),"Shake, shake, shake", Snackbar.LENGTH_LONG).show();
-
             }
         }
 
@@ -107,21 +114,48 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onSensorChanged(SensorEvent event) {
 
-            float value = event.values[0];
-            CoordinatorLayout root = findViewById(R.id.coordinator_layout);
-            TextView txt = findViewById(R.id.sensor);
-            txt.setText(value+"");
-            /*handler.postDelayed(new Runnable() {
-                public void run() {
-                    root.setBackgroundColor(getResources().getColor(R.color.light_green));
-                }
-            }, 1000);
+            value = event.values[0];
 
-            root.setBackgroundColor(Color.WHITE);*/
-            value /= 5;
-            int newValue = (int) (255f * (value + 10)/ 30);
-            if(newValue >= 255) newValue = 255;
-            //root.setBackgroundColor(Color.rgb(newValue, newValue, newValue));
+            try
+            {
+                // To handle the auto
+                Settings.System.putInt(cResolver,
+                        Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+                //Get the current system brightness
+                brightness = Settings.System.getInt(cResolver, Settings.System.SCREEN_BRIGHTNESS);
+
+            }
+            catch (Settings.SettingNotFoundException e)
+            {
+                e.printStackTrace();
+            }
+            if(value < 3 && brightness > 10){
+                Snackbar.make(findViewById(R.id.coordinator_layout),R.string.snackbar_dark, Snackbar.LENGTH_LONG).show();
+
+                brightness = 10;
+
+                //Set the system brightness using the brightness variable value
+                Settings.System.putInt(cResolver, Settings.System.SCREEN_BRIGHTNESS, brightness);
+                //Get the current window attributes
+                WindowManager.LayoutParams layoutpars = window.getAttributes();
+                //Set the brightness of this window
+                layoutpars.screenBrightness = brightness / (float)255;
+                //Apply attribute changes to this window
+                window.setAttributes(layoutpars);
+            }else if(value > 40 && brightness < 150){
+                Snackbar.make(findViewById(R.id.coordinator_layout),R.string.snackbar_light, Snackbar.LENGTH_LONG).show();
+
+                brightness = 150;
+                //Set the system brightness using the brightness variable value
+                Settings.System.putInt(cResolver, Settings.System.SCREEN_BRIGHTNESS, brightness);
+                //Get the current window attributes
+                WindowManager.LayoutParams layoutpars = window.getAttributes();
+                //Set the brightness of this window
+                layoutpars.screenBrightness = brightness / (float)255;
+                //Apply attribute changes to this window
+                window.setAttributes(layoutpars);
+            }
+
 
         }
 
@@ -145,51 +179,6 @@ public class MainActivity extends AppCompatActivity {
         mSensorMgr.unregisterListener(lightSensorListener);
         super.onPause();
     }
-
-    /*@Override
-    public void onSensorChanged(SensorEvent event) {
-        if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
-            long curTime = System.currentTimeMillis();
-            if((curTime - mLastShakeTime) > MIN_TIME_BETWEEN_SHAKES_MILLISECS){
-
-                float x = event.values[0];
-                float y = event.values[1];
-                float z = event.values[2];
-
-                double acceleration = Math.sqrt(Math.pow(x,2) + Math.pow(y,2) + Math.pow(z,2)) - SensorManager.GRAVITY_EARTH;
-
-                if(acceleration > SHAKE_THRESHOLD){
-                    mLastShakeTime = curTime;
-                    Snackbar.make(findViewById(R.id.coordinator_layout),"Shake, shake, shake", Snackbar.LENGTH_LONG).show();
-
-                }
-            }
-        }
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }*/
-
-    /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == NEW_RECIPE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK){
-            Recipe recipe = new Recipe(data.getStringExtra(FormActivity.EXTRA_EDIT_RECIPE_TITLE)));
-            recipeViewModel.insert(recipe);
-            Snackbar.make(findViewById(R.id.coordinator_layout),getString(R.string.recipe_added),Snackbar.LENGTH_LONG).show();
-        }else if(requestCode == EDIT_RECIPE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            editedRecipe.setTitle(data.getStringExtra(EditRecipeActivity.EXTRA_EDIT_RECIPE_TITLE));
-            recipeViewModel.update(editedRecipe);
-            Book editedBook = new Book(data.getStringExtra(EditBookActivity.EXTRA_EDIT_BOOK_TITLE),data.getStringExtra(EditBookActivity.EXTRA_EDIT_BOOK_AUTHOR));
-            editedBook.setId(data.getExtras().getInt("bookId"));
-            bookViewModel.update(editedBook);
-            Snackbar.make(findViewById(R.id.coordinator_layout),getString(R.string.recipe_edited),Snackbar.LENGTH_LONG).show();
-        }else{
-            Toast.makeText(getApplicationContext(),R.string.empty_not_saved,Toast.LENGTH_LONG).show();
-        }
-    }*/
 
     private class RecipeHolder extends RecyclerView.ViewHolder {
         private TextView recipeTitleTextView;
@@ -215,14 +204,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-            /*itemView.setOnLongClickListener(new View.OnLongClickListener(){
-                @Override
-                public boolean onLongClick(View v) {
-                    recipeViewModel.delete(recipe);
-                    return false;
-                }
-
-            });*/
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -275,6 +256,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (Settings.System.canWrite(this)) {
+            }
+    else {
+                Intent intent = new Intent(android.provider.Settings.ACTION_MANAGE_WRITE_SETTINGS);
+                intent.setData(Uri.parse("package:" + getApplicationContext().getPackageName()));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        }
+
+        cResolver = getContentResolver();
+        window = getWindow();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

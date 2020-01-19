@@ -6,16 +6,16 @@
     <dimen name="small_padding">6dp</dimen>
     <dimen name="big_padding">16dp</dimen>
     <dimen name="main_from_top">50dp</dimen>
-    <dimen name="text_size_18sp">18sp</dimen>
-    <dimen name="image_200dp">200dp</dimen>
-    <dimen name="details_title_20sp">20sp</dimen>
-    <dimen name="text_margin_5dp">5dp</dimen>
-    <dimen name="little_padding_3dp">3dp</dimen>
-    <dimen name="details_ingredients_title_30sp">30sp</dimen>
-    <dimen name="details_button_205dp">205dp</dimen>
-    <dimen name="main_recycler_view_0dp">0dp</dimen>
-    <dimen name="ingredients_edit_text_360dp">360dp</dimen>
-    <dimen name="ingredients_add_button_37dp">37dp</dimen>
-    <dimen name="ingredients_add_button_40dp">40dp</dimen>
+    <dimen name="text_size">18sp</dimen>
+    <dimen name="image">200dp</dimen>
+    <dimen name="details_title">20sp</dimen>
+    <dimen name="text_margin">5dp</dimen>
+    <dimen name="little_padding">3dp</dimen>
+    <dimen name="details_ingredients_title">30sp</dimen>
+    <dimen name="details_button">205dp</dimen>
+    <dimen name="main_recycler_view">0dp</dimen>
+    <dimen name="ingredients_edit_text">360dp</dimen>
+    <dimen name="ingredients_add_button_width">37dp</dimen>
+    <dimen name="ingredients_add_button_height">40dp</dimen>
     <dimen name="camera_button">49dp</dimen>
 </resources>

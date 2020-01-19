@@ -18,7 +18,7 @@
         android:id="@+id/title_edit_text"
         android:fontFamily="sans-serif-light"
         android:inputType="textAutoComplete"
-        android:textSize="@dimen/text_size_18sp"
+        android:textSize="@dimen/text_size"
         android:hint="@string/title_hint"
         android:padding="@dimen/small_padding"
         android:layout_marginBottom="@dimen/big_padding"
@@ -32,20 +32,20 @@
 
 
     <EditText
-        android:layout_width="@dimen/ingredients_edit_text_360dp"
+        android:layout_width="@dimen/ingredients_edit_text"
         android:layout_height="wrap_content"
         android:id="@+id/ingredient_edit_text"
         android:fontFamily="sans-serif-light"
         android:inputType="textAutoComplete"
-        android:textSize="@dimen/text_size_18sp"
+        android:textSize="@dimen/text_size"
         android:hint="@string/ingredients_hint"
         android:padding="@dimen/small_padding"
         android:layout_marginBottom="@dimen/big_padding"
         android:layout_marginTop="@dimen/big_padding"/>
 
         <Button
-            android:layout_width="@dimen/ingredients_add_button_37dp"
-            android:layout_height="@dimen/ingredients_add_button_40dp"
+            android:layout_width="@dimen/ingredients_add_button_width"
+            android:layout_height="@dimen/ingredients_add_button_height"
             android:id="@+id/add_ingredient_button"
             android:drawableStart="@drawable/ic_add_black_24dp"
             android:padding="@dimen/small_padding"
@@ -136,8 +136,8 @@
 </RelativeLayout>
 
         <ImageView
-            android:layout_width="@dimen/image_200dp"
-            android:layout_height="@dimen/image_200dp"
+            android:layout_width="@dimen/image"
+            android:layout_height="@dimen/image"
             android:id="@+id/form_image_view"
             app:srcCompat="@drawable/ic_image_black_24dp"
             android:visibility="invisible"/>

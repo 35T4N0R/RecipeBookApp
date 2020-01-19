@@ -27,18 +27,18 @@
         android:layout_gravity="center">
 
         <ImageView
-            android:layout_width="@dimen/image_200dp"
-            android:layout_height="@dimen/image_200dp"
+            android:layout_width="@dimen/image"
+            android:layout_height="@dimen/image"
             android:id="@+id/recipe_details_image"
             app:srcCompat="@drawable/ic_image_black_24dp"
-            android:padding="@dimen/little_padding_3dp"
+            android:padding="@dimen/little_padding"
             android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/image_200dp"
+            android:layout_height="@dimen/image"
             android:id="@+id/recipe_details_title"
-            android:textSize="@dimen/details_title_20sp"
+            android:textSize="@dimen/details_title"
             android:layout_gravity="center"
             tools:text="Title"/>
 
@@ -49,9 +49,9 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="@string/details_ingredients"
-        android:textSize="@dimen/details_ingredients_title_30sp"
-        android:layout_marginTop="@dimen/text_margin_5dp"
-        android:layout_marginBottom="@dimen/text_margin_5dp"/>
+        android:textSize="@dimen/details_ingredients_title"
+        android:layout_marginTop="@dimen/text_margin"
+        android:layout_marginBottom="@dimen/text_margin"/>
 
     <ListView
         android:layout_width="wrap_content"
@@ -64,18 +64,18 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="@string/details_description"
-        android:textSize="@dimen/details_ingredients_title_30sp"
-        android:layout_marginTop="@dimen/text_margin_5dp"
-        android:layout_marginBottom="@dimen/text_margin_5dp"/>
+        android:textSize="@dimen/details_ingredients_title"
+        android:layout_marginTop="@dimen/text_margin"
+        android:layout_marginBottom="@dimen/text_margin"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/details_description"
-        android:textSize="@dimen/details_title_20sp"
-        android:layout_marginTop="@dimen/text_margin_5dp"
-        android:layout_marginBottom="@dimen/text_margin_5dp"
-        android:layout_marginLeft="@dimen/text_margin_5dp"
+        android:textSize="@dimen/details_title"
+        android:layout_marginTop="@dimen/text_margin"
+        android:layout_marginBottom="@dimen/text_margin"
+        android:layout_marginLeft="@dimen/text_margin"
         android:id="@+id/details_description"/>
 
     <TextView
@@ -83,8 +83,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/recipe_details_link"
         android:textAlignment="center"
-        android:textSize="@dimen/details_title_20sp"
-        android:layout_marginBottom="@dimen/image_200dp"
+        android:textSize="@dimen/details_title"
+        android:layout_marginBottom="@dimen/image"
         tools:text="URL"/>
 
 </LinearLayout>
@@ -100,7 +100,7 @@
         android:layout_centerInParent="true"
         >
     <Button
-        android:layout_width="@dimen/details_button_205dp"
+        android:layout_width="@dimen/details_button"
         android:layout_height="@dimen/main_from_top"
         android:id="@+id/recipe_details_edit_button"
         android:layout_gravity="bottom|end"

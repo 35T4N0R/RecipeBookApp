@@ -1,17 +1,14 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorAccent">@color/black</item>
-        <!--<item name="android:textColor">@color/yellow</item>-->
+    <style id="1" name="dark_theme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorAccent">@color/dark_gray</item>
         <item name="android:windowBackground">@color/gray</item>
         <item name="editTextColor">@color/yellow</item>
         <item name="android:editTextColor">@color/yellow</item>
         <item name="android:textColorHint">@color/yellow</item>
         <item name="radioButtonStyle">@style/RadioButtonStyle</item>
-        <item name="colorButtonNormal">@color/black</item>
-        <!--<item name="actionButtonStyle">@style/FloatingActionButtonStyle</item>-->
+        <item name="colorButtonNormal">@color/dark_gray</item>
         <item name="android:textViewStyle">@style/TextViewStyle</item>
         <item name="android:textColorLink">@color/yellow</item>
         <item name="buttonStyle">@style/ButtonStyle</item>
@@ -20,13 +17,13 @@
 
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="dark_theme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
@@ -46,7 +43,7 @@
     </style>
 
     <style name="FloatingActionButtonStyle" parent="Widget.Design.FloatingActionButton">
-        <item name="colorAccent">@color/black</item>
+        <item name="colorAccent">@color/dark_gray</item>
         <item name="android:textColor">@color/yellow</item>
         <item name="android:colorForeground">@color/yellow</item>
         <item name="colorPrimary">@color/yellow</item>
@@ -78,17 +75,16 @@
     </style>
 
     <style name="MyAlertDialogStyle">
-        <!-- Define background colors of title, message, buttons, etc. here -->
-        <item name="android:fullDark">@color/black</item>
-        <item name="android:topDark">@color/black</item>
-        <item name="android:centerDark">@color/black</item>
-        <item name="android:bottomDark">@color/black</item>
+        <item name="android:fullDark">@color/dark_gray</item>
+        <item name="android:topDark">@color/dark_gray</item>
+        <item name="android:centerDark">@color/dark_gray</item>
+        <item name="android:bottomDark">@color/dark_gray</item>
         <item name="android:fullBright">@color/yellow</item>
         <item name="android:topBright">@color/yellow</item>
         <item name="android:centerBright">@color/yellow</item>
         <item name="android:bottomBright">@color/yellow</item>
-        <item name="android:bottomMedium">@color/black</item>
-        <item name="android:centerMedium">@color/black</item>
+        <item name="android:bottomMedium">@color/dark_gray</item>
+        <item name="android:centerMedium">@color/dark_gray</item>
     </style>
 
 
